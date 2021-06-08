@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: 'TNY';
+        src: url(/Commune-Nuit_Debout_web.woff2);
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'jws';
+        src: url(/Montserrat-Medium.ttf);
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      html {
+        -webkit-text-size-adjust: none;
+        -webkit-font-smoothing: antialiased;
+        font-family: inherit;
+        cursor: default;
+        -webkit-tap-highlight-color: transparent;
+      }
+      a,
+      body,
+      div,
+      footer,
+      h1,
+      h2,
+      header,
+      html,
+      img,
+      li,
+      nav,
+      p,
+      span,
+      ul {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font: inherit;
+        font-size: 100%;
+      }
+      body {
+        font-family: 'jws';
+        font-feature-settings: 'liga' off;
+        background-color: #141414;
+        color: #bac4b8;
+      }
+      a,
+      div,
+      footer,
+      h1,
+      h2,
+      header,
+      img,
+      li,
+      nav,
+      p,
+      span,
+      ul {
+        font-family: inherit;
+      }
+      li,
+      ul {
+        list-style: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      a,
+      img,
+      picture,
+      svg,
+      video {
+        display: block;
+      }
+      img,
+      svg,
+      video {
+        width: 100%;
+        height: auto;
+      }
+      svg {
+        height: 100%;
+      }
+      #load {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .iss,
+      .iss-w {
+        left: 0;
+        width: 100%;
+      }
+      .iss-w {
+        z-index: 9999;
+        position: fixed;
+        top: 0;
+        height: 100%;
+        text-align: center;
+        background: #fff;
+        color: #000;
+        font-family: Arial;
+        font-size: 16px;
+        line-height: 18px;
+      }
+      .iss {
+        position: absolute;
+        top: calc(50% - 9px);
+        padding: 0 30px;
+        box-sizing: border-box;
+      }
+    </style>
+    <style>
+      #app {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      #load {
+        position: absolute;
+        z-index: 9998;
+        top: 35px;
+        left: 38px;
+        font-family: 'TNY';
+        font-size: 50px;
+        line-height: 44px;
+        letter-spacing: -0.01em;
+        opacity: 1;
+      }
+      #load > span,
+      .a-nif > span {
+        float: left;
+        overflow: hidden;
+      }
+      #load > span:not(:first-child) {
+        margin-left: -10px;
+      }
+      #load span span {
+        padding-right: 10px;
+        display: block;
+        will-change: transform;
+        transform: translate3d(-110%, 0, 0);
+      }
+      #c2d,
+      #gl,
+      .line-w {
+        pointer-events: none;
+      }
+      #c2d,
+      #gl {
+        top: 0;
+        height: 100%;
+      }
+      .line-w {
+        font-size: 12px;
+        line-height: 34px;
+        letter-spacing: -0.02em;
+      }
+      #c2d,
+      #gl,
+      .line,
+      .line div {
+        position: absolute;
+        left: 0;
+        width: 100%;
+      }
+      .line {
+        bottom: 8px;
+        height: 2px;
+        pointer-events: none;
+      }
+      .line div {
+        top: 0;
+        height: 100%;
+        will-change: transform, background;
+      }
+      .line div:last-child {
+        transition: background 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .line div:first-child {
+        transition: background 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      #nav {
+        pointer-events: none;
+      }
+      #n0 {
+        position: absolute;
+        top: 35px;
+        left: 38px;
+        font-family: 'TNY';
+        font-size: 50px;
+        line-height: 44px;
+        letter-spacing: -0.02em;
+      }
+      #n0 > span,
+      .n1 {
+        overflow: hidden;
+      }
+      #n0 > span {
+        float: left;
+      }
+      #n0 span span {
+        display: block;
+        will-change: color, transform;
+        transform: translate3d(-110%, 0, 0);
+      }
+      .n1 {
+        position: absolute;
+        top: 40px;
+        right: 50px;
+      }
+      #n0 > span,
+      .n1 a {
+        pointer-events: none;
+      }
+      #n0 span span,
+      #n1-0,
+      .n2 {
+        transition: color 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      #n1-0,
+      .n2 {
+        will-change: transform, color;
+      }
+      #n1-1 {
+        will-change: transform;
+      }
+      #n2 {
+        position: absolute;
+        bottom: 48px;
+        left: 50px;
+        font-size: 10px;
+        line-height: 10px;
+      }
+      #n2,
+      #n2 > div {
+        overflow: hidden;
+      }
+      .n1 a,
+      .n2 {
+        transform: translate3d(0, 101%, 0);
+      }
+      .n2 {
+        display: table;
+      }
+      #n2 > div:last-child .n2::after {
+        content: 'â†—';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-left: 5px;
+        transition: opacity 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      #n2:hover > div:last-child .n2::after {
+        transition: opacity 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 1;
+      }
+      #a,
+      #a-left,
+      #n3,
+      .n3::after {
+        position: absolute;
+      }
+      #n3 {
+        bottom: 47px;
+        right: 50px;
+        text-align: right;
+        font-size: 12px;
+        line-height: 14px;
+      }
+      #n3 > div {
+        overflow: hidden;
+        padding-left: 20px;
+      }
+      .n3 {
+        display: inline-block;
+        transition: color 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform, color;
+        transform: translate3d(0, 101%, 0);
+        pointer-events: all;
+      }
+      .n3::after {
+        content: 'â†—';
+        top: 0;
+        left: 0;
+        padding-right: 5px;
+        transition: opacity 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      .n3:hover::after {
+        transition: opacity 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 1;
+      }
+      #a,
+      #a-left {
+        width: 100%;
+      }
+      #a {
+        top: 0;
+        left: 0;
+        height: 100%;
+        pointer-events: none;
+      }
+      #a-left {
+        left: 50px;
+        top: 49px;
+      }
+      #a-nif-w {
+        margin-left: 1px;
+        font-family: 'TNY';
+      }
+      .a-nif::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+      .a-nif span span {
+        float: left;
+        transform: translate3d(-101%, 0, 0);
+        will-change: transform;
+      }
+      #a-p {
+        padding-top: 7.5vh;
+        font-size: 10px;
+        line-height: 10px;
+      }
+      #a-p span {
+        display: block;
+      }
+      #a-p > span,
+      #a-rights > div,
+      #a-social div,
+      .a-li li {
+        overflow: hidden;
+      }
+      #a-p span span,
+      #a-social a,
+      .a-li div {
+        transform: translate3d(0, 110%, 0);
+        will-change: transform;
+      }
+      #a-social {
+        position: absolute;
+        left: 50px;
+        bottom: calc(6.66667vh + 50px);
+        font-size: 12px;
+        line-height: 14px;
+      }
+      #a-social a {
+        display: table;
+        pointer-events: all;
+      }
+      #a-list {
+        position: absolute;
+        bottom: calc(10.83333vh + 50px);
+        right: 0;
+        font-size: 11px;
+        line-height: 11px;
+      }
+      #a-list > li {
+        float: left;
+      }
+      .a-li {
+        position: relative;
+        height: 385px;
+      }
+      .a-li li {
+        padding-left: 12px;
+      }
+      .a-li li:not(:first-child) {
+        position: absolute;
+        left: 0;
+      }
+      .a-li span:first-child {
+        position: absolute;
+        top: 0;
+        left: -17px;
+        text-align: right;
+        width: 24px;
+      }
+      .a-li span:last-child {
+        padding-left: 24px;
+      }
+      #a-design {
+        bottom: 48px;
+        right: 0;
+        font-size: 10px;
+        line-height: 10px;
+        overflow: hidden;
+      }
+      #a-design a,
+      #a-rights div div {
+        will-change: transform;
+        transform: translate3d(0, 101%, 0);
+      }
+      #a-design a {
+        display: table;
+        pointer-events: all;
+      }
+      #a-design,
+      #a-rights,
+      .e {
+        position: absolute;
+      }
+      #a-rights {
+        bottom: 48px;
+        right: 50px;
+        font-size: 10px;
+        line-height: 10px;
+        text-align: right;
+      }
+      #a-rights div div {
+        display: inline-block;
+      }
+      .e {
+        bottom: 49px;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+      .e-l,
+      .e-t {
+        overflow: hidden;
+      }
+      .e-t > div,
+      .i-l div div,
+      .i-r div div {
+        transform: translate3d(0, -101%, 0);
+        will-change: transform;
+      }
+      .e-l {
+        position: relative;
+        margin: 9px auto 0;
+        width: 3px;
+      }
+      .e-l div {
+        position: absolute;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        border-right-width: 1px;
+        border-right-style: solid;
+      }
+      .e-l,
+      .e-s,
+      .i-l {
+        pointer-events: none;
+      }
+      .e-s {
+        margin: 13px auto 0;
+        width: 14px;
+        height: 14px;
+        overflow: hidden;
+      }
+      #p-s div,
+      .e-l div,
+      .e-s div {
+        transform: translate3d(0, -110%, 0);
+        will-change: transform;
+      }
+      .i-l {
+        position: absolute;
+        bottom: 47px;
+        left: 50%;
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 0.02em;
+        transform: translateX(-100%);
+      }
+      .i-l > div {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+      }
+      .i-l div div:nth-child(1) {
+        width: 30px;
+        font-size: 6px;
+      }
+      .i-l div div:nth-child(2) {
+        width: 130px;
+      }
+      .i-l div div:nth-child(3) {
+        width: 250px;
+      }
+      .i-r,
+      .pgn {
+        position: absolute;
+      }
+      .i-r {
+        bottom: 48px;
+        left: calc(50% + 140px);
+        font-size: 10px;
+        line-height: 10px;
+        letter-spacing: 0.02em;
+        pointer-events: none;
+      }
+      .i-r > div {
+        overflow: hidden;
+      }
+      .pgn {
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin-top: 1px;
+      }
+      .pgn div {
+        will-change: transform;
+      }
+      .pgn,
+      .pgn > div {
+        overflow: hidden;
+      }
+      .pgn > div {
+        top: 0;
+      }
+      .pgn div div {
+        padding: 0 2px;
+        transform: translate3d(-100%, 0, 0);
+      }
+      #p,
+      #p-l div,
+      .pgn > div {
+        position: absolute;
+      }
+      #p {
+        top: 49px;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+      #p-l,
+      #p-s {
+        overflow: hidden;
+      }
+      #p-s {
+        margin: auto;
+        width: 14px;
+        height: 14px;
+        text-align: center;
+        pointer-events: none;
+      }
+      #p-l {
+        position: relative;
+        width: 3px;
+      }
+      #p-l div {
+        left: 0;
+        width: 1px;
+        height: 100%;
+        border-right-width: 1px;
+        border-right-style: solid;
+        transform: translate3d(0, -110%, 0);
+        will-change: transform;
+      }
+      #p-l,
+      #p-t,
+      .t {
+        pointer-events: none;
+      }
+      #p-t {
+        margin-top: 4px;
+        overflow: hidden;
+      }
+      #p-t > div,
+      #v > div > div {
+        transform: translate3d(0, -101%, 0);
+        will-change: transform;
+      }
+      .t {
+        left: 38px;
+        width: calc(100vw - 76px);
+        font-family: 'TNY';
+        letter-spacing: -0.024em;
+      }
+      #v,
+      .t,
+      .t > div {
+        position: absolute;
+      }
+      .t > div {
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      }
+      .t div div {
+        transform: translate3d(-101%, 0, 0);
+      }
+      .t div {
+        will-change: transform;
+      }
+      #v {
+        bottom: 44px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+      #v > div,
+      #w,
+      #w-l {
+        pointer-events: none;
+      }
+      #v > div {
+        overflow: hidden;
+      }
+      #w,
+      #w-l {
+        position: absolute;
+      }
+      #w {
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #w-l {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #w-l div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      #w-l div,
+      .w-l-bg,
+      .w-l-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .w-l-img {
+        opacity: 0;
+        will-change: transform;
+      }
+      .w-l-bg.fx {
+        opacity: 0;
+        transition: opacity 100ms linear 1000ms;
+      }
+      .w-l-img.fx {
+        opacity: 1;
+        transition: opacity 1000ms cubic-bezier(0.39, 0.575, 0.565, 1);
+      }
+      #w-s-w,
+      .w-s {
+        width: 8.88889vh;
+      }
+      #w-s-w {
+        position: absolute;
+        top: 50%;
+        right: 50px;
+        height: 65vh;
+        transform: translate(0, -50%);
+      }
+      .w-s {
+        position: relative;
+        height: 5vh;
+        pointer-events: all;
+        cursor: pointer;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .w-s:not(:first-child) {
+        margin-top: 1.66667vh;
+      }
+      .w-s-img {
+        top: -0.1px;
+        left: -0.1px;
+        width: calc(100% + 0.2px);
+        height: calc(100% + 0.2px);
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform;
+      }
+      .w-s-img.fx {
+        opacity: 1;
+        transition: opacity 1000ms cubic-bezier(0.39, 0.575, 0.565, 1);
+      }
+      #p404,
+      #w-a,
+      .w-s-img {
+        position: absolute;
+      }
+      #w-a {
+        top: calc(17.5vh - 6px);
+        right: 44px;
+        width: calc(8.88889vh + 12px);
+        height: calc(5vh + 12px);
+        border-width: 1.34px;
+        border-style: solid;
+        box-sizing: border-box;
+        opacity: 0;
+      }
+      #p404 {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #p404 a {
+        padding: 20px;
+        font-size: 12px;
+      }
+      @media (max-width: 700px) {
+        #c2d,
+        .pgn {
+          display: none;
+        }
+      }
+      @media (min-height: 850px) {
+        #a-nif-w {
+          font-size: calc(17.5vh + 100px);
+          line-height: calc(13.0725vh + 74.7px);
+        }
+        .a-nif > span {
+          margin-left: calc(-0.42vh + -2.4px);
+        }
+      }
+      @media (min-height: 750px) and (max-height: 850px) {
+        #a-nif-w {
+          font-size: calc(15vh + 100px);
+          line-height: calc(11.205vh + 74.7px);
+        }
+        .a-nif > span {
+          margin-left: calc(-0.36vh + -2.4px);
+        }
+      }
+      @media (max-height: 750px) {
+        #a-nif-w {
+          font-size: calc(13.33333vh + 100px);
+          line-height: calc(9.96vh + 74.7px);
+        }
+        .a-nif > span {
+          margin-left: calc(-0.32vh + -2.4px);
+        }
+      }
+      @media (max-height: 700px) {
+        #a-p {
+          display: none;
+        }
+      }
+      @media (max-height: 850px) {
+        #a-social div:nth-child(4),
+        #a-social div:nth-child(5) {
+          display: none;
+        }
+      }
+      @media (max-height: 600px) {
+        #a-list {
+          display: none;
+        }
+      }
+      @media (min-width: 1800px) {
+        #a-list > li {
+          width: 260px;
+        }
+        #a-design {
+          width: 1028px;
+        }
+      }
+      @media (max-width: 1800px) {
+        #a-list > li {
+          width: 230px;
+        }
+      }
+      @media (max-width: 1550px) {
+        #a-list > li:last-child {
+          display: none;
+        }
+      }
+      @media (max-width: 1250px) {
+        #a-list > li:nth-child(3) {
+          display: none;
+        }
+        #a-design {
+          display: none;
+        }
+      }
+      @media (max-width: 1050px) {
+        #a-list > li {
+          display: none;
+        }
+      }
+      @media (min-aspect-ratio: 1660/1200) {
+        .a-li span {
+          display: inline-block;
+        }
+        .t {
+          height: 28.125vh;
+          line-height: 28.125vh;
+          font-size: 37.5vh;
+        }
+        .tt {
+          top: calc(50% - 33.125vh);
+        }
+        .tb {
+          top: calc(50% - 5vh);
+        }
+        .t > div {
+          margin-left: -3.33333vh;
+        }
+        .t div div {
+          padding-left: 3.33333vh;
+          padding-right: 3.33333vh;
+        }
+        #w-l {
+          width: 96.2963vh;
+          height: 54.16667vh;
+        }
+      }
+      @media (max-aspect-ratio: 1660/1200) {
+        .a-li span {
+          display: inline-block;
+        }
+        .t {
+          height: 19.87952vw;
+          line-height: 19.87952vw;
+          font-size: 26.50602vw;
+        }
+        .tt {
+          top: calc(50% - 23.49398vw);
+        }
+        .tb {
+          top: calc(50% - 3.61446vw);
+        }
+        .t > div {
+          margin-left: -2.40964vw;
+        }
+        .t div div {
+          padding-left: 2.40964vw;
+          padding-right: 2.40964vw;
+        }
+        #w-l {
+          width: 69.61178vw;
+          height: 39.15663vw;
+        }
+      }
+      @media (min-width: 1550px) and (max-width: 1800px) {
+        #a-design {
+          width: 908px;
+        }
+      }
+      @media (min-width: 1250px) and (max-width: 1550px) {
+        #a-design {
+          width: 678px;
+        }
+      }
+      @media (min-height: 760px) {
+        .e-l {
+          height: 34px;
+        }
+      }
+      @media (min-height: 700px) and (max-height: 760px) {
+        .e-l {
+          height: 3.4vh;
+        }
+      }
+      @media (min-height: 660px) and (max-height: 700px) {
+        .e-l {
+          height: 2.5vh;
+        }
+      }
+      @media (max-height: 660px) {
+        .e-l {
+          height: 2vh;
+        }
+      }
+      @media (max-width: 1350px) {
+        .i-l,
+        .i-r {
+          display: none;
+        }
+      }
+      @media (min-height: 870px) {
+        #p-l {
+          margin: 11px auto 0;
+          height: 16px;
+        }
+      }
+      @media (min-height: 810px) and (max-height: 870px) {
+        #p-l {
+          margin: 11px auto 0;
+          height: 1.2vh;
+        }
+      }
+      @media (max-height: 810px) {
+        #p-l {
+          height: 0;
+        }
+      }
+      @media (max-width: 1150px) {
+        #w-a,
+        #w-s-w {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="app">
+      <div id="a" style="color: #bac4b8">
+        <div id="a-left">
+          <div id="a-nif-w">
+            <div class="a-nif">
+              <span
+                ><span style="transform: translate3d(0%, 0%, 0px)"
+                  >E</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(-0.0986328%, 0%, 0px)"
+                  >S</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(0%, 0%, 0px)"
+                  >Y</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(-0.0986328%, 0%, 0px)"
+                  >6</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(-0.0986328%, 0%, 0px)"
+                  >8</span
+                ></span
+              >
+            </div>
+            <div class="a-nif">
+              <span
+                ><span style="transform: translate3d(0%, 0%, 0px)"
+                  >3</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(0%, 0%, 0px)"
+                  >3</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(-0.0986328%, 0%, 0px)"
+                  >0</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(-0.0986328%, 0%, 0px)"
+                  >9</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(0%, 0%, 0px)"
+                  >8</span
+                ></span
+              ><span
+                ><span style="transform: translate3d(0%, 0%, 0px)"
+                  >L</span
+                ></span
+              >
+            </div>
+          </div>
+          <p id="a-p">
+            <span
+              ><span style="transform: translate3d(0%, 0%, 0px)"
+                >ARISTIDE BENOIST IS A DEVELOPER WHO SPECIALIZES IN</span
+              > </span
+            ><span
+              ><span style="transform: translate3d(0%, 0.183086%, 0px)"
+                >MOTION AND INTERACTION. AS A FREELANCER, HE WORKS</span
+              > </span
+            ><span
+              ><span style="transform: translate3d(0%, 0.29996%, 0px)"
+                >WITH COMPANIES, AGENCIES, STARTUPS AND INDIVIDUALS</span
+              > </span
+            ><span
+              ><span style="transform: translate3d(0%, 0.474413%, 0px)"
+                >ALL OVER THE WORLD.</span
+              ></span
+            >
+          </p>
+        </div>
+        <div id="a-social">
+          <div>
+            <a
+              href="mailto:hello@aristidebenoist.com"
+              style="transform: translate3d(0%, 0%, 0px)"
+              >EMAIL ↗</a
+            >
+          </div>
+          <div>
+            <a
+              class="_tb"
+              href="https://www.instagram.com/aristidebenoist"
+              style="transform: translate3d(0%, 0%, 0px)"
+              >INSTAGRAM ↗</a
+            >
+          </div>
+          <div>
+            <a
+              class="_tb"
+              href="https://twitter.com/AriBenoist"
+              style="transform: translate3d(0%, 0%, 0px)"
+              >TWITTER ↗</a
+            >
+          </div>
+          <div>
+            <a
+              class="_tb"
+              href="https://www.behance.net/aristidebenoist"
+              style="transform: translate3d(0%, 0.107422%, 0px)"
+              >BEHANCE ↗</a
+            >
+          </div>
+          <div>
+            <a
+              class="_tb"
+              href="https://dribbble.com/aristidebenoist"
+              style="transform: translate3d(0%, 0%, 0px)"
+              >DRIBBBLE ↗</a
+            >
+          </div>
+          <div>
+            <a
+              class="_tb"
+              href="https://www.linkedin.com/in/aristide-benoist"
+              style="transform: translate3d(0%, 0%, 0px)"
+              >LINKEDIN ↗</a
+            >
+          </div>
+          <div>
+            <a
+              class="_tb"
+              href="https://github.com/aristidebenoist"
+              style="transform: translate3d(0%, 0%, 0px)"
+              >GITHUB ↗</a
+            >
+          </div>
+        </div>
+        <ul id="a-list">
+          <li>
+            <ul class="a-li">
+              <li>
+                <div style="transform: translate3d(0%, 0%, 0px)">CLIENTS</div>
+              </li>
+              <li style="top: 44px">
+                <div style="transform: translate3d(0%, 0%, 0px)">A</div>
+              </li>
+              <li style="top: 55px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  BEAR GRYLLS
+                </div>
+              </li>
+              <li style="top: 77px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  DIGITAL ASSET, DRIBBBLE
+                </div>
+              </li>
+              <li style="top: 99px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  FUSE PROJECT
+                </div>
+              </li>
+              <li style="top: 110px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  GOOGLE
+                </div>
+              </li>
+              <li style="top: 132px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  INSTAGRAM, INSTRUMENT
+                </div>
+              </li>
+              <li style="top: 154px">
+                <div style="transform: translate3d(0%, 0%, 0px)">KEYSTONE</div>
+              </li>
+              <li style="top: 165px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  LEDGER INVESTING
+                </div>
+              </li>
+              <li style="top: 187px">
+                <div style="transform: translate3d(0%, 0%, 0px)">NETFLIX</div>
+              </li>
+              <li style="top: 198px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  OBAMA FOUNDATION
+                </div>
+              </li>
+              <li style="top: 231px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  RAPPI
+                </div>
+              </li>
+              <li style="top: 242px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  SUPER FRIENDLY
+                </div>
+              </li>
+              <li style="top: 253px">
+                <div style="transform: translate3d(0%, 0%, 0px)">TWITCH</div>
+              </li>
+              <li style="top: 286px">
+                <div style="transform: translate3d(0%, 0%, 0px)">WATSON DG</div>
+              </li>
+              <li style="top: 319px">
+                <div style="transform: translate3d(0%, 0%, 0px)">Z</div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul class="a-li">
+              <li>
+                <div style="transform: translate3d(0%, 0%, 0px)">AWWWARDS</div>
+              </li>
+              <li style="top: 66px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  <span>2</span><span>INDEPENDENT OF THE YEAR</span>
+                </div>
+              </li>
+              <li style="top: 77px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  <span>2</span><span>SITE OF THE MONTH</span>
+                </div>
+              </li>
+              <li style="top: 308px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  <span>24</span><span>SITE OF THE DAY</span>
+                </div>
+              </li>
+              <li style="top: 275px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  <span>21</span><span>DEVELOPER AWARD</span>
+                </div>
+              </li>
+              <li style="top: 110px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  <span>6</span><span>MOBILE OF THE WEEK</span>
+                </div>
+              </li>
+              <li style="top: 264px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  <span>20</span><span>MOBILE EXCELLENCE</span>
+                </div>
+              </li>
+              <li style="top: 44px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">0</div>
+              </li>
+              <li style="top: 154px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">1</div>
+              </li>
+              <li style="top: 374px">
+                <div style="transform: translate3d(0%, 0%, 0px)">3</div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul class="a-li">
+              <li>
+                <div style="transform: translate3d(0%, 0%, 0px)">FWA</div>
+              </li>
+              <li style="top: 55px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  <span>1</span><span>FWA OF THE MONTH</span>
+                </div>
+              </li>
+              <li style="top: 66px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  <span>2</span><span>FWAWWWARD</span>
+                </div>
+              </li>
+              <li style="top: 220px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  <span>16</span><span>FWA OF THE DAY</span>
+                </div>
+              </li>
+              <li style="top: 44px">
+                <div style="transform: translate3d(0%, 0%, 0px)">0</div>
+              </li>
+              <li style="top: 154px">
+                <div style="transform: translate3d(0%, 0%, 0px)">1</div>
+              </li>
+              <li style="top: 264px">
+                <div style="transform: translate3d(0%, 0%, 0px)">2</div>
+              </li>
+              <li style="top: 374px">
+                <div style="transform: translate3d(0%, 0%, 0px)">3</div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul class="a-li">
+              <li>
+                <div style="transform: translate3d(0%, 0%, 0px)">BEHANCE</div>
+              </li>
+              <li style="top: 55px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  <span>1</span><span>GRAPHIC DESIGN</span>
+                </div>
+              </li>
+              <li style="top: 99px">
+                <div style="transform: translate3d(0%, 0%, 0px)">
+                  <span>5</span><span>GALLERY</span>
+                </div>
+              </li>
+              <li style="top: 154px">
+                <div style="transform: translate3d(0%, 0.107422%, 0px)">
+                  <span>10</span><span>INTERACTION</span>
+                </div>
+              </li>
+              <li style="top: 44px">
+                <div style="transform: translate3d(0%, 0%, 0px)">0</div>
+              </li>
+              <li style="top: 264px">
+                <div style="transform: translate3d(0%, 0%, 0px)">2</div>
+              </li>
+              <li style="top: 374px">
+                <div style="transform: translate3d(0%, 0%, 0px)">3</div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div id="a-design">
+          <a
+            class="_tb"
+            href="https://www.jonway.studio"
+            style="transform: translate3d(0%, 0%, 0px)"
+            >DESIGN BY JW.S (JON WAY STUDIO) ↗</a
+          >
+        </div>
+        <div id="a-rights">
+          <div>
+            <div style="transform: translate3d(0%, 0%, 0px)">
+              ALL RIGHTS RESERVED
+            </div>
+          </div>
+          <div>
+            <div style="transform: translate3d(0%, 0%, 0px)">
+              ARISTIDE BENOIST 2021®
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
